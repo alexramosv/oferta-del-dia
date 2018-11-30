@@ -298,6 +298,23 @@ Check out React Docs about [React.Component Lifecycle](https://reactjs.org/docs/
 - [`ComponentDidUpdate`](https://reactjs.org/docs/react-component.html#componentdidupdate)
 - [`ComponentWillUnmount`](https://reactjs.org/docs/react-component.html#componentwillunmount)
 
+## Locking firebase down with some security rules
+
+```json
+{
+  "rules": {
+    // won't let people delete an existing room
+    ".write": "!data.exists()",
+    ".read": true,
+    "$room": {
+      // only the store owner can edit the data
+      ".write": "auth != null && (!data.exists() || data.child('owner').val() === auth.uid)",
+      ".read": true
+    }
+  }
+}
+```
+
 ## V. Cool tricks
 
 Check out the `return null` trick from inside a `render()` method in a component.

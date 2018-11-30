@@ -1,38 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class AddFishForm extends React.Component {
-  /*
-  state = {
-    name: "",
-    price: "",
-    status: "",
-    desc: "",
-    image: ""
+  static propTypes = {
+    addFish: PropTypes.func.isRequired
   };
-
-  handleChangeName = event => {
-    this.setState({ name: event.target.value });
-  };
-
-  handleChangePrice = event => {
-    this.setState({ price: event.target.value });
-  };
-        <input
-          type="text"
-          name="name"
-          value={this.state.name}
-          onChange={this.handleChangeName}
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          name="price"
-          value={this.state.price}
-          onChange={this.handleChangePrice}
-          placeholder="Price"
-        />
-
-*/
 
   nameRef = React.createRef();
   priceRef = React.createRef();
@@ -43,7 +15,6 @@ class AddFishForm extends React.Component {
   createFish = event => {
     // 1. Stop the <form> from submitting
     event.preventDefault();
-
     // 2. Create fish with form data
     const fish = {
       name: this.nameRef.current.value,
@@ -52,10 +23,8 @@ class AddFishForm extends React.Component {
       desc: this.descRef.current.value,
       image: this.imageRef.current.value
     };
-
     // 3. Send fish to App component (where state lives)
     this.props.addFish(fish);
-
     // 4. Refresh the form
     event.currentTarget.reset();
   };

@@ -22,6 +22,13 @@ class Inventory extends React.Component {
     shopOwner: null
   };
 
+  componentDidMount() {
+    // On Refresh check out if the user was logged in
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) this.authHandler({ user });
+    });
+  }
+
   authHandler = async authData => {
     // 1. Look up the current store in the Firebase Database
     const store = await base.fetch(this.props.storeId, { context: this });

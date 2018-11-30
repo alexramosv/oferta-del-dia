@@ -5,6 +5,7 @@ import AddFishForm from "./AddFishForm";
 import EditFishForm from "./EditFishForm";
 import Login from "./Login";
 import base, { firebaseApp } from "../base";
+import Logout from "./Logout";
 
 class Inventory extends React.Component {
   static propTypes = {
@@ -47,6 +48,11 @@ class Inventory extends React.Component {
       .then(this.authHandler);
   };
 
+  logout = async () => {
+    await firebase.auth().signOut();
+    this.setState({ currentUser: null });
+  };
+
   render() {
     const amINotLoggedIn = !this.state.currentUser;
     if (amINotLoggedIn) {
@@ -58,6 +64,7 @@ class Inventory extends React.Component {
       return (
         <div>
           <p>Sorry you are not the owner!</p>
+          <Logout logout={this.logout} />
         </div>
       );
     }
@@ -65,6 +72,7 @@ class Inventory extends React.Component {
     return (
       <div className="inventory">
         <h2>Inventory</h2>
+        <Logout logout={this.logout} />
         {Object.keys(this.props.fishes).map(fishKey => (
           <EditFishForm
             key={fishKey}

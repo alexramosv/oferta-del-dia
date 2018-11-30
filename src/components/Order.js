@@ -15,24 +15,26 @@ class Order extends React.Component {
     const quantity = this.props.order[orderKey];
     const fish = this.props.fishes[orderKey];
     const isAvailable = fish && fish.status === "available";
+    const orderTransitionOptions = {
+      classNames: "order",
+      key: orderKey,
+      timeout: { enter: 500, exit: 500 }
+    };
+    const countTransitionOptions = {
+      classNames: "count",
+      key: quantity,
+      timeout: { enter: 500, exit: 500 }
+    };
 
     if (!fish) return null;
 
     if (isAvailable) {
       return (
-        <CSSTransition
-          classNames="order"
-          key={orderKey}
-          timeout={{ enter: 500, exit: 500 }}
-        >
+        <CSSTransition {...orderTransitionOptions}>
           <li key={orderKey}>
             <span>
               <TransitionGroup component="span" className="count">
-                <CSSTransition
-                  classNames="count"
-                  key={quantity}
-                  timeout={{ enter: 500, exit: 500 }}
-                >
+                <CSSTransition {...countTransitionOptions}>
                   <span>{quantity}</span>
                 </CSSTransition>
               </TransitionGroup>
@@ -47,11 +49,7 @@ class Order extends React.Component {
       );
     } else {
       return (
-        <CSSTransition
-          classNames="order"
-          key={orderKey}
-          timeout={{ enter: 500, exit: 500 }}
-        >
+        <CSSTransition {...orderTransitionOptions}>
           <li key={orderKey}>
             Sorry {fish ? fish.name : "product"} is not available!
           </li>

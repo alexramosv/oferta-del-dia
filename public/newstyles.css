@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #eaeaea;
+  color: #4f4f4f;
+  font-family: "Helvetica Neue", "Helvetica", "Verdana", Arial, sans-serif;
+  line-height: 1.4em;
+}
+
+.content {
+  margin: 20px auto;
+  width: 500px;
+}
+
+footer {
+  color: #a6a6a6;
+  margin: 50px auto 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+footer a {
+  color: inherit;
+}
+
+.pizza-text {
+  text-align: center;
+  color: #0d86ba;
+  font-family: "Helvetica Neue", "Helvetica", "Verdana", Arial, sans-serif;
+  font-weight: bold;
+}
+
+header {
+  padding: 25px 0px;
+}
+
+ul {
+  margin: 30px 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  background: #fff;
+  height: 55px;
+  position: relative;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 15px 30px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+li:hover {
+  background: #fcfcfc;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+li .phrase {
+  position: absolute;
+  top: 18px;
+  left: 80px;
+}
+
+li .points {
+  position: absolute;
+  top: 18px;
+  right: 80px;
+}
+
+li.marked {
+  background: #61a1bc;
+}
+.score {
+  color: #0d86ba;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 25px 0px;
+}
+
+.score .label {
+  position: relative;
+  left: 285px;
+}
+
+.score .value {
+  position: relative;
+  left: 314px;
+}
